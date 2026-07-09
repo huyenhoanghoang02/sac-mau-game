@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f2ea" />
+    <meta
+      name="description"
+      content="Sắc Màu - game xếp màu thư giãn, chơi được trên máy tính và điện thoại."
+    />
+    <title>Sắc Màu</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar" aria-label="Thông tin trò chơi">
+        <div class="brand">
+          <img class="brand-mark" src="assets/icon.svg" alt="" />
+          <div>
+            <h1>Sắc Màu</h1>
+            <p id="levelName">Dải màu bình yên</p>
+          </div>
+        </div>
+
+        <div class="stats" aria-label="Thống kê ván chơi">
+          <div class="stat">
+            <span>Lượt</span>
+            <strong id="moves">0</strong>
+          </div>
+          <div class="stat">
+            <span>Đúng</span>
+            <strong id="accuracy">0%</strong>
+          </div>
+          <div class="stat">
+            <span>Thời gian</span>
+            <strong id="timer">00:00</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="play-area" aria-label="Bàn chơi">
+          <div class="progress-row">
+            <div>
+              <span class="eyebrow">Cấp <span id="levelNumber">1</span></span>
+              <h2 id="objective">Sắp xếp các ô để màu chuyển mượt từ trái sang phải.</h2>
+            </div>
+            <div class="challenge-pill" id="challengeText">Thư giãn</div>
+          </div>
+
+          <div class="board-wrap">
+            <div id="board" class="board" aria-label="Lưới màu" role="list"></div>
+          </div>
+
+          <div class="actionbar" aria-label="Điều khiển chính">
+            <button id="undoBtn" class="icon-button" type="button" title="Hoàn tác" aria-label="Hoàn tác">
+              <span aria-hidden="true">↶</span>
+            </button>
+            <button id="hintBtn" class="primary-button" type="button">
+              Gợi ý <span id="hintCount">3</span>
+            </button>
+            <button id="shuffleBtn" class="icon-button" type="button" title="Xáo lại" aria-label="Xáo lại">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Tiến trình và chế độ chơi">
+          <section class="panel-section">
+            <h3>Chế độ</h3>
+            <div class="segmented" role="group" aria-label="Chọn chế độ">
+              <button class="mode-btn is-active" data-mode="relax" type="button">Êm</button>
+              <button class="mode-btn" data-mode="moves" type="button">Lượt</button>
+              <button class="mode-btn" data-mode="time" type="button">Giờ</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h3>Mục tiêu</h3>
+            <p id="modeDescription">
+              Không giới hạn. Tập trung cảm nhận sắc độ và hoàn thành bức tranh màu.
+            </p>
+            <div class="meter" aria-hidden="true">
+              <div id="scoreBar"></div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h3>Bộ sưu tập</h3>
+            <div class="collection">
+              <div>
+                <span>Hoàn thành</span>
+                <strong id="completedCount">0</strong>
+              </div>
+              <div>
+                <span>Kỷ lục</span>
+                <strong id="bestScore">0%</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h3>Cấp độ</h3>
+            <div id="levelList" class="level-list" aria-label="Danh sách cấp độ"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="completeDialog" class="modal">
+      <div class="modal-content">
+        <span class="eyebrow">Hoàn thành</span>
+        <h2 id="resultTitle">Rất mượt!</h2>
+        <p id="resultText">Bạn vừa hoàn thành một dải màu tinh tế.</p>
+        <div class="result-grid">
+          <div>
+            <span>Lượt</span>
+            <strong id="resultMoves">0</strong>
+          </div>
+          <div>
+            <span>Thời gian</span>
+            <strong id="resultTime">00:00</strong>
+          </div>
+          <div>
+            <span>Độ chính xác</span>
+            <strong id="resultAccuracy">100%</strong>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="saveImageBtn" class="secondary-button" type="button">Lưu ảnh</button>
+          <button id="nextBtn" class="primary-button" type="button">Màn tiếp</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

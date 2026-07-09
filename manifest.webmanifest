@@ -1,0 +1,18 @@
+{
+  "name": "Sắc Màu",
+  "short_name": "Sắc Màu",
+  "description": "Game xếp màu thư giãn, chơi trên máy tính và điện thoại.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff8ee",
+  "theme_color": "#f6f2ea",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
